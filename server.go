@@ -161,7 +161,7 @@ func (server *Server) handleSignals(ctx context.Context) {
 				server.gracefullyShutdown()
 			}
 		case <-ctx.Done():
-			server.logger.Error("Background context for manager closed - %v - Shutting down...", zap.Int("pid", pid), zap.Error(ctx.Err()))
+			server.logger.Info("Background context closed. Shutting down...", zap.Int("pid", pid), zap.Error(ctx.Err()))
 			server.gracefullyShutdown()
 		}
 	}
